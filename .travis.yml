@@ -5,6 +5,7 @@ branches:
   only:
   - master
   - Dev
+  - /^test-.*$/
 cache:
   directories:
     - ~/.npm
