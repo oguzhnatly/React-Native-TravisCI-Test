@@ -17,23 +17,21 @@ before_script:
   - npm install
   - npm install jest-expo
   - npm install -g expo-cli
-script:
-  - npm ci
-  - npx jest --ci
 stages:
-- name: ci dev
-  if: branch = Dev
-- name: ci branchs
-  if: branch = /^test-.*$/
+- name: ci test dev
+  if: branch = master
+- name: ci test branchs
+  if: branch =~ /^test-.*$/
 - name: build
   if: branch = master
 jobs:
   include:
-    - stage: ci dev
+    - stage: ci test dev
       node_js: stable
       script:
         - npm ci
-    - stage: ci branchs
+        - npm test
+    - stage: ci test branchs
       node_js: stable
       script:
         - npm ci
