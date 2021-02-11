@@ -19,11 +19,17 @@ before_script:
 script:
   - npm ci
   - npx jest --ci
+stages:
+- name: build
+  if: branch = master
 jobs:
   include:
-    - stage: deploy
+    - stage: test
       node_js: stable
       script:
         - npm ci
+    - stage: build
+      node_js: stable
+      script:
         - npx expo login -u $EXPO_USERNAME -p $EXPO_PASSWORD
         - npx expo build:android
