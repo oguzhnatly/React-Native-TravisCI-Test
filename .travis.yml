@@ -37,6 +37,8 @@ jobs:
     - stage: build
       node_js: stable
       before_script:
+        - npm install -g npm@latest
+        - npm install
         - npm install jest-expo
         - npm install -g expo-cli
       script:
