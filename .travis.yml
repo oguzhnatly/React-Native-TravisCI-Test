@@ -29,11 +29,11 @@ jobs:
     - stage: ci test dev
       node_js: stable
       script:
-        - npm test
+        - npx jest --ci
     - stage: ci test branchs
       node_js: stable
       script:
-        - npm test
+        - npx jest --ci
     - stage: build
       node_js: stable
       before_script:
