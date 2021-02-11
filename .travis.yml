@@ -20,13 +20,19 @@ script:
   - npm ci
   - npx jest --ci
 stages:
-- name: ci test
+- name: ci dev
   if: branch = Dev
+- name: ci branchs
+  if: branch = /^test-.*$/
 - name: build
   if: branch = master
 jobs:
   include:
-    - stage: ci test
+    - stage: ci dev
+      node_js: stable
+      script:
+        - npm ci
+    - stage: ci branchs
       node_js: stable
       script:
         - npm ci
