@@ -18,5 +18,6 @@ it('Todo should be able to add to list', () => {
   fireEvent.press(button_element);
 
   const list = wrapper.getByTestId('list');
+  console.log(list);
   expect(list.props.data.length).toBe(1);
 });
