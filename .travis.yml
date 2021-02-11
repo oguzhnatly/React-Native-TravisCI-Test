@@ -20,16 +20,20 @@ script:
   - npm ci
   - npx jest --ci
 stages:
+- name: ci test
+  if: branch = Dev
 - name: build
   if: branch = master
 jobs:
   include:
-    - stage: test
+    - stage: ci test
       node_js: stable
       script:
         - npm ci
     - stage: build
       node_js: stable
       script:
+        - npm ci
         - npx expo login -u $EXPO_USERNAME -p $EXPO_PASSWORD
-        - npx expo build:android
+        - npx expo build:android --type apk-bundle
+        - npx expo build:android --type apk-bundle
