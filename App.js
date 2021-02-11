@@ -41,7 +41,7 @@ function App() {
             flexDirection: 'row',
             justifyContent: 'space-between',
             margin: 10,
-          }}>
+          }}> 
           <Text style={{fontSize: 30, fontWeight: 'bold', color: '#ff9e80'}}>
             TODO
           </Text>
