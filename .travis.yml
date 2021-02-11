@@ -19,7 +19,7 @@ script:
   - npm ci
 stages:
 - name: ci test dev
-  if: branch = master
+  if: branch = dev
 - name: ci test branchs
   if: branch =~ /^test-.*$/
 - name: build
