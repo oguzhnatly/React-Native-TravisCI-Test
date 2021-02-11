@@ -15,8 +15,6 @@ install:
 before_script:
   - npm install -g npm@latest
   - npm install
-  - npm install jest-expo
-  - npm install -g expo-cli
 stages:
 - name: ci test dev
   if: branch = master
@@ -38,8 +36,12 @@ jobs:
         - npm test
     - stage: build
       node_js: stable
+      before_script:
+        - npm install jest-expo
+        - npm install -g expo-cli
       script:
         - npm ci
+        - npm test
         - npx expo login -u $EXPO_USERNAME -p $EXPO_PASSWORD
         - npx expo build:android --type app-bundle
         - npx expo build:ios --type archive
