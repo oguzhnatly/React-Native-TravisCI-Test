@@ -35,9 +35,11 @@ jobs:
       node_js: stable
       script:
         - npm ci
+        - npm test
     - stage: build
       node_js: stable
       script:
         - npm ci
         - npx expo login -u $EXPO_USERNAME -p $EXPO_PASSWORD
         - npx expo build:android --type app-bundle
+        - npx expo build:ios --type archive
