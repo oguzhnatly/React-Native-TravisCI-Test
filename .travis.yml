@@ -1,6 +1,10 @@
 language: node_js
 node_js:
   - stable
+branches:
+  only:
+  - master
+  - Dev
 cache:
   directories:
     - ~/.npm
@@ -22,4 +26,4 @@ jobs:
       script:
         - npm ci
         - npx expo login -u $EXPO_USERNAME -p $EXPO_PASSWORD
-        - npx expo build
+        - npx expo build:android
