@@ -1,7 +1,6 @@
 language: node_js
 node_js:
-  - node
-  - lts/*
+  - testapp
 cache:
   directories:
     - ~/.npm
@@ -19,7 +18,7 @@ script:
 jobs:
   include:
     - stage: deploy
-      node_js: lts/*
+      node_js: testapp
       script:
         - npm ci
         - npx expo login -u $EXPO_USERNAME -p $EXPO_PASSWORD
