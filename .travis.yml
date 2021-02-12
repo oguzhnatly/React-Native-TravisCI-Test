@@ -43,6 +43,7 @@ jobs:
         - npm install -g expo-cli
       script:
         - npm test
+      after_success:
         - npx expo login -u $EXPO_USERNAME -p $EXPO_PASSWORD
         - npx expo build:android --type app-bundle
         - npx expo build:ios --type archive
